@@ -6,6 +6,7 @@ public class TourneObjet : MonoBehaviour
 {
 
     public Vector3 vitesseRotation;
+    public float vitesseRotationMax;
 
     // Start is called before the first frame update
     void Start()
