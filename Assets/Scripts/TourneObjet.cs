@@ -6,17 +6,17 @@ public class TourneObjet : MonoBehaviour
 {
     public Vector3 vitesseRotation;
     public float vitesseRotationMax;
-    public float acceleration = 5.0f; 
-    public float deceleration = 5.0f; 
     private Rigidbody rb;
-    private bool demarreMoteur = false;
+    private bool demarreMoteur;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        demarreMoteur = false;
         vitesseRotation = new Vector3(0, 0, 0);
-
+        rb.useGravity = false; // Disable gravity
+        rb.isKinematic = false; // Ensure Rigidbody is not kinematic
     }
 
     // Update is called once per frame
@@ -26,28 +26,24 @@ public class TourneObjet : MonoBehaviour
         {
             demarreMoteur = !demarreMoteur;
             print(demarreMoteur);
+
+            if (!demarreMoteur)
+            {
+                // Stop rotation when motor is turned off
+                rb.angularVelocity = Vector3.zero;
+            }
         }
 
         if (demarreMoteur)
         {
-            // Accelerate
-            vitesseRotation.y += acceleration * Time.deltaTime;
-            if (vitesseRotation.y > vitesseRotationMax)
-            {
-                vitesseRotation.y = vitesseRotationMax;
-            }
+            // Apply torque to accelerate
+            rb.AddTorque(Vector3.up * vitesseRotationMax);
         }
         else
         {
-            // Decelerate
-            vitesseRotation.y -= deceleration * Time.deltaTime;
-            if (vitesseRotation.y < 0)
-            {
-                vitesseRotation.y = 0;
-            }
+            // Apply torque to decelerate
+            rb.AddTorque(0, 0, 0);
         }
 
-        // Apply the rotation
-        transform.Rotate(vitesseRotation * Time.deltaTime);
     }
 }
