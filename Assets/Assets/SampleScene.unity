@@ -269,7 +269,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 670e26be7da11784dabb3154fe31bfe1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 963194228}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 670e26be7da11784dabb3154fe31bfe1, type: 3}
       insertIndex: -1
@@ -308,7 +311,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vitesseRotation: {x: 0, y: 0, z: 0}
-  vitesseRotationMax: 79.6
+  vitesseRotationMax: 100
+  demarreMoteur: 0
 --- !u!54 &657610476
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -319,7 +323,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -332,7 +336,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -668,7 +672,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 92.88284
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -694,12 +698,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2574843, y: 0.4158221, z: -0.12396073, w: 0.86338156}
-  m_LocalPosition: {x: -115.98132, y: 206.67905, z: -182.7699}
-  m_LocalScale: {x: -29.4, y: 1, z: 1}
+  m_LocalRotation: {x: 0.06443068, y: 0.10193445, z: -0.0065653017, w: 0.99268067}
+  m_LocalPosition: {x: -2.1201172, y: 1.6993256, z: -12.0273285}
+  m_LocalScale: {x: -29.399998, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2000747706}
   m_LocalEulerAnglesHint: {x: 64.113, y: 166.716, z: 80.236}
 --- !u!1001 &1163707556
 PrefabInstance:
@@ -804,7 +808,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 2
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &2000747694 stripped
 GameObject:
@@ -872,6 +876,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6edc4bf033b6d499498986fb8b76f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  heliceAvant: {fileID: 657610471}
+--- !u!4 &2000747706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 670e26be7da11784dabb3154fe31bfe1, type: 3}
+  m_PrefabInstance: {fileID: 657610470}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2046542488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -945,7 +955,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 227147828}
   - {fileID: 1163707556}

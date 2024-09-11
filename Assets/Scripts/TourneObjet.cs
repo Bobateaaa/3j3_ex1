@@ -7,14 +7,13 @@ public class TourneObjet : MonoBehaviour
     public Vector3 vitesseRotation;
     public float vitesseRotationMax;
     private Rigidbody rb;
-    private bool demarreMoteur;
+    public bool demarreMoteur;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         demarreMoteur = false;
-        vitesseRotation = new Vector3(0, 0, 0);
         rb.useGravity = false; // Disable gravity
         rb.isKinematic = false; // Ensure Rigidbody is not kinematic
     }
@@ -37,12 +36,15 @@ public class TourneObjet : MonoBehaviour
         if (demarreMoteur)
         {
             // Apply torque to accelerate
-            rb.AddTorque(Vector3.up * vitesseRotationMax);
+            Vector3 Torque = Vector3.up * vitesseRotationMax * Time.deltaTime;
+            rb.AddTorque(Torque);
+            vitesseRotation = rb.angularVelocity;
         }
         else
         {
             // Apply torque to decelerate
             rb.AddTorque(0, 0, 0);
+            vitesseRotation = Vector3.zero;
         }
 
     }
