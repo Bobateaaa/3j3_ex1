@@ -4,48 +4,47 @@ using UnityEngine;
 
 public class TourneObjet : MonoBehaviour
 {
+    // Déclarer les variables
     public Vector3 vitesseRotation;
     public float vitesseRotationMax;
-    private Rigidbody rb;
     public bool demarreMoteur;
+    public float acceleration;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        // Initialiser les variables
+        acceleration = 2;
         demarreMoteur = false;
-        rb.useGravity = false; // Disable gravity
-        rb.isKinematic = false; // Ensure Rigidbody is not kinematic
+ 
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Si la touche Entrée est enfoncée, démarrer ou arrêter le moteur
         if (Input.GetKeyDown(KeyCode.Return))
         {
             demarreMoteur = !demarreMoteur;
-            print(demarreMoteur);
-
-            if (!demarreMoteur)
-            {
-                // Stop rotation when motor is turned off
-                rb.angularVelocity = Vector3.zero;
-            }
         }
 
+        // Si le moteur est démarré, augmenter la vitesse de rotation
         if (demarreMoteur)
         {
-            // Apply torque to accelerate
-            Vector3 Torque = Vector3.up * vitesseRotationMax * Time.deltaTime;
-            rb.AddTorque(Torque);
-            vitesseRotation = rb.angularVelocity;
+            if (vitesseRotation.y < vitesseRotationMax)
+            {
+                vitesseRotation.y += acceleration * Time.deltaTime;
+            }
         }
         else
         {
-            // Apply torque to decelerate
-            rb.AddTorque(0, 0, 0);
-            vitesseRotation = Vector3.zero;
+            if (vitesseRotation.y > 0) vitesseRotation.y -= acceleration;
+            vitesseRotation.y = 0;
         }
+        
 
+        if(vitesseRotation.y < 0) vitesseRotation.y = 0;  // pour éviter les valeurs négatives
+
+        transform.Rotate(vitesseRotation); // tourner l'objet selon la vitesse de rotation
     }
 }

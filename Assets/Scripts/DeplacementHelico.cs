@@ -4,56 +4,65 @@ using UnityEngine;
 
 public class DeplacementHelico : MonoBehaviour
 {
-    private Rigidbody rb;
-    public GameObject heliceAvant;
-    private float vitesseHelice;
+    // Déclarer les variables
+    private Rigidbody rb; 
+    public GameObject heliceAvant; 
+    private float vitesseHelice; 
     private bool demarreMoteur;
-    float vitesseAvant = 0f;  
+    float vitesseAvant = 0f; 
     float vitesseAvantMax = 10000f; 
-    float vitesseTourne = 1000f;  
-    float vitesseMonte = 1000f;
+    float vitesseTourne = 1000f; 
+    float vitesseMonte = 1000f; 
 
     // Start is called before the first frame update
     void Start()
     {
+        // Initialiser la référence au Rigidbody
         rb = GetComponent<Rigidbody>();
+
+        // Fixer l'angle de rotation local de l'hélicoptère sur l'axe X à 0
         transform.localEulerAngles = new Vector3(0f, transform.localEulerAngles.y, 0f);
-        rb.useGravity = false; // Disable gravity at the start
+
+        // Désactiver la gravité au début
+        rb.useGravity = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        // Access the y component of vitesseRotation
+        // Accéder à la vitesse de rotation de l'hélice avant
         vitesseHelice = heliceAvant.GetComponent<TourneObjet>().vitesseRotation.y;
+
+        // Accéder à l'état de l'hélice avant
         demarreMoteur = heliceAvant.GetComponent<TourneObjet>().demarreMoteur;
 
-        if (vitesseHelice > 6f)
+        // Si la vitesse de l'hélice est suffisante, désactiver la gravité et permettre le contrôle
+        if (vitesseHelice > 20f)
         {
             rb.useGravity = false;
 
-            // Apply force to move up and down
+            // Appliquer une force pour monter/descendre
             var forceMonter = Input.GetAxis("Vertical") * vitesseMonte;
             rb.AddRelativeForce(Vector3.up * forceMonter);
 
-            // Apply torque to turn left and right
+            // Appliquer un couple pour tourner à gauche/droite
             var forceTourner = Input.GetAxis("Horizontal") * vitesseTourne;
             rb.AddRelativeTorque(0, forceTourner, 0);
 
+            // Si la touche E est enfoncée, augmenter la vitesse vers l'avant
             if (Input.GetKey(KeyCode.E))
             {
-                // Apply force to move forward
-                vitesseAvant += 500f;
+                vitesseAvant += 10f;
                 if (vitesseAvant > vitesseAvantMax)
                 {
                     vitesseAvant = vitesseAvantMax;
                 }
                 rb.AddRelativeForce(Vector3.forward * vitesseAvant);
             }
+            // Si la touche Q est enfoncée, diminuer la vitesse vers l'avant
             else if (Input.GetKey(KeyCode.Q))
             {
-                // Apply force to move backward
-                vitesseAvant -= 500f;
+                vitesseAvant -= 10f;
                 if (vitesseAvant < 0)
                 {
                     vitesseAvant = 0;
@@ -61,6 +70,7 @@ public class DeplacementHelico : MonoBehaviour
                 rb.AddRelativeForce(Vector3.forward * vitesseAvant);
             }
         }
+        // Si le moteur n'est pas démarré, activer la gravité
         else if (!demarreMoteur)
         {
             rb.useGravity = true;
