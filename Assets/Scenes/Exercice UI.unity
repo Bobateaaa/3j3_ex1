@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   temps: 100
   compteurUI: {fileID: 767719193}
-  jaugeEssence: {fileID: 0}
+  jaugeEssence: {fileID: 1624280001}
 --- !u!4 &2017586724
 Transform:
   m_ObjectHideFlags: 0
