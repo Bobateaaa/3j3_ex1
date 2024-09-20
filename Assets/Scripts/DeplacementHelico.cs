@@ -18,16 +18,16 @@ public class DeplacementHelico : MonoBehaviour
     float vitesseTourne = 1000f; 
     float vitesseMonte = 1000f; 
 
+    private TourneObjet tourneObjet;
+
     public bool finJeu;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Accéder à la vitesse de rotation de l'hélice avant
-        vitesseHelice = heliceAvant.GetComponent<TourneObjet>().vitesseRotation.y;
+        tourneObjet = heliceAvant.GetComponent<TourneObjet>();
+        
 
-        // Accéder à l'état de l'hélice avant
-        demarreMoteur = heliceAvant.GetComponent<TourneObjet>().demarreMoteur;
         // Initialiser la référence au Rigidbody
         rb = GetComponent<Rigidbody>();
 
@@ -42,6 +42,8 @@ public class DeplacementHelico : MonoBehaviour
    
     void FixedUpdate()
     {
+        vitesseHelice = tourneObjet.vitesseRotation.y;
+        demarreMoteur = tourneObjet.demarreMoteur;
 
         if(finJeu == false)
         {
