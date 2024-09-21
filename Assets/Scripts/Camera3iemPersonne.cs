@@ -11,7 +11,7 @@ public class Camera3iemPersonne : MonoBehaviour
         
     }
 
-    // Update is called once per frame                                    // la cible est déterminée dans l'inspecteur
+    // Update is called once per frame                                   
 
     void FixedUpdate() 
     {

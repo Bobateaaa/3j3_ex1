@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeplacementHelico : MonoBehaviour
 {
@@ -22,12 +23,16 @@ public class DeplacementHelico : MonoBehaviour
 
     public bool finJeu;
 
+    public AudioSource audioSource;
+    public AudioClip sonBidon;
+
     // Start is called before the first frame update
     void Start()
     {
+        finJeu = false;
+
         tourneObjet = heliceAvant.GetComponent<TourneObjet>();
         
-
         // Initialiser la référence au Rigidbody
         rb = GetComponent<Rigidbody>();
 
@@ -36,6 +41,7 @@ public class DeplacementHelico : MonoBehaviour
 
         // Désactiver la gravité au début
         rb.useGravity = false;
+
     }
 
 
@@ -90,11 +96,12 @@ public class DeplacementHelico : MonoBehaviour
         }
         else if(finJeu == true)
         {
-
+            Invoke("FinDePartie", 8f);
         }
     }
 
-    void OnCollisionEnter(Collision collisionTrue)   // le type de la variable est Collision 
+    // Si l'hélicoptère entre en collision avec le terrain, activer l'explosion
+    void OnCollisionEnter(Collision collisionTrue)   
     {
         if (collisionTrue.gameObject.tag == "terrain") 
         {
@@ -104,10 +111,24 @@ public class DeplacementHelico : MonoBehaviour
             rb.drag = 0;
             rb.angularDrag = 0;
             rb.freezeRotation = false;
-
-            
         } 
 
+    }
+
+    void OnTriggerEnter(Collider triggerTrue)
+    {
+        if (triggerTrue.gameObject.tag == "bidon")
+        {
+            Destroy(triggerTrue.gameObject);
+            GetComponent<AudioSource>().PlayOneShot(sonBidon);
+
+
+        }
+    }
+
+    void FinDePartie()
+    {
+        SceneManager.LoadScene("SceneTerrain");
     }
 
 }

@@ -10,9 +10,14 @@ public class GestionnaireCameras : MonoBehaviour
     public GameObject cameraDistanceFixe;
     public GameObject cameraSurveillance;
 
+    public GameObject helico; 
+    private DeplacementHelico ScriptDeplacementHelico;
+    public bool finJeu;
+
     // Start is called before the first frame update
     void Start()
     {
+        ScriptDeplacementHelico = helico.GetComponent<DeplacementHelico>(); 
         // Initialiser les variables
         cameraFPS.SetActive(true);
         camera3ePersonne.SetActive(false); 
@@ -23,6 +28,8 @@ public class GestionnaireCameras : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        finJeu = ScriptDeplacementHelico.finJeu;
+
         // Si la touche 1 est enfoncée, activer la caméra FPS
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -42,6 +49,11 @@ public class GestionnaireCameras : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             ActiverCamera(cameraSurveillance);
+        }
+
+        if (finJeu == true)
+        {
+            ActiverCamera(cameraDistanceFixe);
         }
     }
 

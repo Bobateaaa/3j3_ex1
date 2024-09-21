@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - terrain
+  - bidon
   layers:
   - Default
   - TransparentFX

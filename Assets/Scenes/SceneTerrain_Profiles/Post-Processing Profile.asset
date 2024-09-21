@@ -21,7 +21,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 0.78
+    value: 3.39
   color:
     overrideState: 1
     value: {r: 0.20754719, g: 0.1262905, b: 0.1262905, a: 1}
@@ -39,7 +39,7 @@ MonoBehaviour:
     value: -12
   thicknessModifier:
     overrideState: 0
-    value: 1
+    value: 10
   zBias:
     overrideState: 0
     value: 0.0001
@@ -1381,10 +1381,10 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 193
+    value: 158
   sampleCount:
     overrideState: 1
-    value: 20
+    value: 26
 --- !u!114 &-616506244796650735
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1403,7 +1403,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 15.1
+    value: 17.4
   threshold:
     overrideState: 1
     value: 0.71
@@ -1417,8 +1417,8 @@ MonoBehaviour:
     overrideState: 1
     value: 8.9
   anamorphicRatio:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.02
   color:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -1476,7 +1476,7 @@ MonoBehaviour:
     overrideState: 0
     value: 6.3
   keyValue:
-    overrideState: 0
+    overrideState: 1
     value: 1
   eyeAdaptation:
     overrideState: 0
