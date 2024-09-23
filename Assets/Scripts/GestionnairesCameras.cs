@@ -50,11 +50,6 @@ public class GestionnaireCameras : MonoBehaviour
         {
             ActiverCamera(cameraSurveillance);
         }
-
-        if (finJeu == true)
-        {
-            ActiverCamera(cameraDistanceFixe);
-        }
     }
 
     void ActiverCamera(GameObject cameraChoisi)

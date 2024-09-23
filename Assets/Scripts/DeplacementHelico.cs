@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeplacementHelico : MonoBehaviour
 {
@@ -25,11 +26,16 @@ public class DeplacementHelico : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip sonBidon;
+    public Image jaugeEssence;
+
+    public float quantiteEssence = 1f;
 
     // Start is called before the first frame update
     void Start()
     {
         finJeu = false;
+
+        jaugeEssence.fillAmount = quantiteEssence;
 
         tourneObjet = heliceAvant.GetComponent<TourneObjet>();
         
@@ -42,6 +48,23 @@ public class DeplacementHelico : MonoBehaviour
         // Désactiver la gravité au début
         rb.useGravity = false;
 
+        StartCoroutine(Compteur());
+
+    }
+
+    void Update()
+    {
+        jaugeEssence.fillAmount = quantiteEssence;
+
+        if(quantiteEssence <= 0)
+        {
+            finJeu = true;
+        }
+
+        if(finJeu == true)
+        {
+            FinDuJeu();
+        }
     }
 
 
@@ -105,12 +128,7 @@ public class DeplacementHelico : MonoBehaviour
     {
         if (collisionTrue.gameObject.tag == "terrain") 
         {
-            finJeu = true;
-            objetExplosion.SetActive(true);
-            rb.useGravity = true;
-            rb.drag = 0;
-            rb.angularDrag = 0;
-            rb.freezeRotation = false;
+            FinDuJeu();
         } 
 
     }
@@ -121,9 +139,30 @@ public class DeplacementHelico : MonoBehaviour
         {
             Destroy(triggerTrue.gameObject);
             GetComponent<AudioSource>().PlayOneShot(sonBidon);
-
-
+            quantiteEssence += 0.5f;
         }
+    }
+
+    IEnumerator Compteur()
+    {
+        yield return new WaitForSeconds(1);
+        quantiteEssence -= 0.02f;
+
+        if(quantiteEssence > 0)
+        {
+            StartCoroutine(Compteur());
+        }
+
+    }
+
+    void FinDuJeu()
+    {
+            finJeu = true;
+            objetExplosion.SetActive(true);
+            rb.useGravity = true;
+            rb.drag = 0;
+            rb.angularDrag = 0;
+            rb.freezeRotation = false;
     }
 
     void FinDePartie()

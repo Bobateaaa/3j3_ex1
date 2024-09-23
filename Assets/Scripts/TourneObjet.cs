@@ -51,7 +51,6 @@ public class TourneObjet : MonoBehaviour
         if (finJeu == true)
         {
             vitesseRotation = Vector3.zero;
-        Debug.Log("finJeu is true. vitesseRotation set to zero.");
         }
 
         if(vitesseRotation.y < 0) vitesseRotation.y = 0;  // pour éviter les valeurs négatives
