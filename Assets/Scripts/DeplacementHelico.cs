@@ -33,6 +33,7 @@ public class DeplacementHelico : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initialiser les variables
         finJeu = false;
 
         jaugeEssence.fillAmount = quantiteEssence;
@@ -48,19 +49,23 @@ public class DeplacementHelico : MonoBehaviour
         // Désactiver la gravité au début
         rb.useGravity = false;
 
+        // Démarrer le compteur de la jauge d'essence
         StartCoroutine(Compteur());
 
     }
 
     void Update()
     {
+        // Mettre à jour la jauge d'essence
         jaugeEssence.fillAmount = quantiteEssence;
 
+        // Si la quantité d'essence est inférieure ou égale à 0, activer la fin du jeu
         if(quantiteEssence <= 0)
         {
             finJeu = true;
         }
 
+        // Si la fin du jeu est activée, activer la fin du jeu
         if(finJeu == true)
         {
             FinDuJeu();
@@ -71,9 +76,11 @@ public class DeplacementHelico : MonoBehaviour
    
     void FixedUpdate()
     {
+        // Mettre à jour les variables et vérifier les états
         vitesseHelice = tourneObjet.vitesseRotation.y;
         demarreMoteur = tourneObjet.demarreMoteur;
 
+        // Si le jeu n'est pas terminé, permettre le contrôle de l'hélicoptère
         if(finJeu == false)
         {
             
@@ -133,6 +140,7 @@ public class DeplacementHelico : MonoBehaviour
 
     }
 
+    // Si l'hélicoptère entre en collision avec un bidon, détruire le bidon et ajouter de l'essence
     void OnTriggerEnter(Collider triggerTrue)
     {
         if (triggerTrue.gameObject.tag == "bidon")
@@ -143,6 +151,7 @@ public class DeplacementHelico : MonoBehaviour
         }
     }
 
+    // Compteur pour la jauge d'essence
     IEnumerator Compteur()
     {
         yield return new WaitForSeconds(1);
@@ -155,6 +164,7 @@ public class DeplacementHelico : MonoBehaviour
 
     }
 
+    // Activer la fin du jeu
     void FinDuJeu()
     {
             finJeu = true;
@@ -165,6 +175,7 @@ public class DeplacementHelico : MonoBehaviour
             rb.freezeRotation = false;
     }
 
+    // Activer la fin de la partie
     void FinDePartie()
     {
         SceneManager.LoadScene("SceneTerrain");

@@ -17,7 +17,9 @@ public class GestionnaireCameras : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Prendre le script DeplacementHelico
         ScriptDeplacementHelico = helico.GetComponent<DeplacementHelico>(); 
+
         // Initialiser les variables
         cameraFPS.SetActive(true);
         camera3ePersonne.SetActive(false); 
