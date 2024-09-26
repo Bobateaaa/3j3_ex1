@@ -1381,7 +1381,7 @@ MonoBehaviour:
     value: 1
   shutterAngle:
     overrideState: 1
-    value: 158
+    value: 79
   sampleCount:
     overrideState: 1
     value: 26
@@ -1403,22 +1403,22 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 17.4
+    value: 23.88
   threshold:
     overrideState: 1
-    value: 0.71
+    value: 0.81
   softKnee:
     overrideState: 1
-    value: 0.74
+    value: 0.533
   clamp:
     overrideState: 0
     value: 65472
   diffusion:
     overrideState: 1
-    value: 8.9
+    value: 7.7
   anamorphicRatio:
     overrideState: 1
-    value: 0.02
+    value: 0.54
   color:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}

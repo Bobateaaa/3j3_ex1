@@ -2,17 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script pour faire la gestion de la caméra 3e personne
+//
+// Matilda Kang
+
 public class Camera3iemPersonne : MonoBehaviour
 {
+    //déclarer les variables
     public GameObject cibleJoueur;   
+
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame                                   
 
+    // Update is called once per frame                                   
     void FixedUpdate() 
     {
     // Définie une position 5 mètres en hauteur et 10 mètres en arrière de la cible (selon les axes locaux de la cible)

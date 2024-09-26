@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+// Script pour faire la gestion du déplacement de l'hélicoptère,
+//la gestion de jauge d'essence et de la fin du jeu
+//  
+// Matilda Kang
 public class DeplacementHelico : MonoBehaviour
 {
     // Déclarer les variables
@@ -49,7 +53,7 @@ public class DeplacementHelico : MonoBehaviour
         // Désactiver la gravité au début
         rb.useGravity = false;
 
-        // Démarrer le compteur de la jauge d'essence
+        // Démarrer le compteur pour la jauge d'essence
         StartCoroutine(Compteur());
 
     }

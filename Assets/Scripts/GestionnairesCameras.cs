@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script pour faire la gestion des caméras
+//
+// Matilda Kang
+
 public class GestionnaireCameras : MonoBehaviour
 {
      // Déclarer les variables
@@ -54,6 +58,7 @@ public class GestionnaireCameras : MonoBehaviour
         }
     }
 
+    // Fonction pour activer la caméra spécifiée
     void ActiverCamera(GameObject cameraChoisi)
     {
         // Désactiver toutes les caméras

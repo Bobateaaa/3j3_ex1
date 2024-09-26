@@ -16,8 +16,10 @@ public class TourneObjet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Initialiser les variables
+        //Récupérer le script DeplacementHelico
         ScriptDeplacementHelico = helico.GetComponent<DeplacementHelico>(); 
+
+        // Initialiser les variables
         acceleration = 2;
         demarreMoteur = false;
  
@@ -26,6 +28,7 @@ public class TourneObjet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Récupérer la valeur de finJeu
         finJeu = ScriptDeplacementHelico.finJeu;
         
         // Si la touche Entrée est enfoncée, démarrer ou arrêter le moteur
@@ -48,6 +51,7 @@ public class TourneObjet : MonoBehaviour
             vitesseRotation.y = 0;
         }
         
+        // Arrêter la rotation si la fin du jeu est vrai
         if (finJeu == true)
         {
             vitesseRotation = Vector3.zero;
