@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // Script pour faire la gestion du déplacement de l'hélicoptère,
-//la gestion de jauge d'essence et de la fin du jeu
+//la gestion de jauge d'essence, le son du bidon et la fin du jeu
 //  
 // Matilda Kang
 public class DeplacementHelico : MonoBehaviour
@@ -24,15 +24,14 @@ public class DeplacementHelico : MonoBehaviour
     float vitesseTourne = 1000f; 
     float vitesseMonte = 1000f; 
 
+
     private TourneObjet tourneObjet;
-
     public bool finJeu;
-
     public AudioSource audioSource;
     public AudioClip sonBidon;
     public Image jaugeEssence;
-
     public float quantiteEssence = 1f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +56,7 @@ public class DeplacementHelico : MonoBehaviour
         StartCoroutine(Compteur());
 
     }
+
 
     void Update()
     {
@@ -104,7 +104,7 @@ public class DeplacementHelico : MonoBehaviour
                 // Si la touche E est enfoncée, augmenter la vitesse vers l'avant
                 if (Input.GetKey(KeyCode.E))
                 {
-                    vitesseAvant += 10f;
+                    vitesseAvant += 5f;
                     if (vitesseAvant > vitesseAvantMax)
                     {
                         vitesseAvant = vitesseAvantMax;
@@ -114,7 +114,7 @@ public class DeplacementHelico : MonoBehaviour
                 // Si la touche Q est enfoncée, diminuer la vitesse vers l'avant
                 else if (Input.GetKey(KeyCode.Q))
                 {
-                    vitesseAvant -= 10f;
+                    vitesseAvant -= 5f;
                     if (vitesseAvant < 0)
                     {
                         vitesseAvant = 0;
@@ -134,6 +134,7 @@ public class DeplacementHelico : MonoBehaviour
         }
     }
 
+
     // Si l'hélicoptère entre en collision avec le terrain, activer l'explosion
     void OnCollisionEnter(Collision collisionTrue)   
     {
@@ -143,6 +144,7 @@ public class DeplacementHelico : MonoBehaviour
         } 
 
     }
+
 
     // Si l'hélicoptère entre en collision avec un bidon, détruire le bidon et ajouter de l'essence
     void OnTriggerEnter(Collider triggerTrue)
@@ -154,6 +156,7 @@ public class DeplacementHelico : MonoBehaviour
             quantiteEssence += 0.5f;
         }
     }
+
 
     // Compteur pour la jauge d'essence
     IEnumerator Compteur()
@@ -168,6 +171,7 @@ public class DeplacementHelico : MonoBehaviour
 
     }
 
+
     // Activer la fin du jeu
     void FinDuJeu()
     {
@@ -178,6 +182,7 @@ public class DeplacementHelico : MonoBehaviour
             rb.angularDrag = 0;
             rb.freezeRotation = false;
     }
+
 
     // Activer la fin de la partie
     void FinDePartie()

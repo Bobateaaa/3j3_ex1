@@ -5,6 +5,8 @@ using UnityEngine;
 public class ControleDome : MonoBehaviour
 {
     public Animator animator;
+    public AudioClip sonOuvertureDome;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,5 +27,10 @@ public class ControleDome : MonoBehaviour
             animator.SetBool("OuvertureDome", false);
         }
         
+    }
+
+    void joueSon()
+    {
+        GetComponent<AudioSource>().PlayOneShot(sonOuvertureDome);
     }
 }
