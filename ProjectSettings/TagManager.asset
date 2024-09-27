@@ -6,6 +6,7 @@ TagManager:
   tags:
   - terrain
   - bidon
+  - ennemi
   layers:
   - Default
   - TransparentFX

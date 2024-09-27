@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 // Script pour faire la gestion du déplacement de l'hélicoptère,
-//la gestion de jauge d'essence, le son du bidon et la fin du jeu
+//la gestion de jauge d'essence, le son du bidon et la fin du jeu avec les collisions avec le terrain et les drones
 //  
 // Matilda Kang
 public class DeplacementHelico : MonoBehaviour
@@ -141,6 +141,7 @@ public class DeplacementHelico : MonoBehaviour
         if (collisionTrue.gameObject.tag == "terrain") 
         {
             FinDuJeu();
+            finJeu = true;
         } 
 
     }
@@ -154,6 +155,13 @@ public class DeplacementHelico : MonoBehaviour
             Destroy(triggerTrue.gameObject);
             GetComponent<AudioSource>().PlayOneShot(sonBidon);
             quantiteEssence += 0.5f;
+        }
+
+        if (triggerTrue.gameObject.tag == "ennemi")
+        {
+            Destroy(triggerTrue.gameObject);
+            FinDuJeu();
+            finJeu = true;
         }
     }
 
