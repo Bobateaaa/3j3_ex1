@@ -20,6 +20,7 @@ public class SonHelico : MonoBehaviour
     private DeplacementHelico ScriptDeplacementHelico;
     public bool finJeu;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +34,7 @@ public class SonHelico : MonoBehaviour
         audioSource.volume = 0;
         audioSource.pitch = 0.5f;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -88,13 +90,10 @@ public class SonHelico : MonoBehaviour
             audioSource.pitch = 1f;
         }
 
-        // Si la fin du jeu est vrai, arrêter le son pour l'hélicoptère
+        // Si la fin du jeu est vrai, arrêter le son pour l'hélico
         if (finJeu)
         {
             sonHelico.Stop();
         }
-
-        // Je voulais ajouter un fade out aussi, alors j'ai utilisé quelque chose d'autre
-        // audioSource.volume = vitesseRotation / 50;
     }
 }

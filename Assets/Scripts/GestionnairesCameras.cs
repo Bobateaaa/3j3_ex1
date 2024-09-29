@@ -18,6 +18,7 @@ public class GestionnaireCameras : MonoBehaviour
     private DeplacementHelico ScriptDeplacementHelico;
     public bool finJeu;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +31,7 @@ public class GestionnaireCameras : MonoBehaviour
         cameraDistanceFixe.SetActive(false);
         cameraSurveillance.SetActive(false);
     }
+
 
     // Update is called once per frame
     void Update()
@@ -57,6 +59,7 @@ public class GestionnaireCameras : MonoBehaviour
             ActiverCamera(cameraSurveillance);
         }
     }
+
 
     // Fonction pour activer la caméra spécifiée
     void ActiverCamera(GameObject cameraChoisi)

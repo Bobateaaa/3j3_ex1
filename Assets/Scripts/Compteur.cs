@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 
 // Script pour faire la gestion du compteur de temps
-//lorsque le jeu démarre
+// lorsque le jeu démarre
 //  
 // Matilda Kang
 
@@ -25,6 +25,7 @@ public class Compteur : MonoBehaviour
         ScriptDeplacementHelico = helico.GetComponent<DeplacementHelico>(); 
     }
 
+
     void Update()
     {
         //Récupérer la valeur de finJeu
@@ -37,11 +38,13 @@ public class Compteur : MonoBehaviour
         }
     }
  
+
     // fonction lorsque le jeu démarre, le compteur commence
     public void DemarrerJeu()
     {
         StartCoroutine(AfficherLeTemps());
     }
+
 
     // fonction pour le faire un compteur
     IEnumerator AfficherLeTemps()

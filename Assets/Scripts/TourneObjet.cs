@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script pour faire tourner les helices de l'hélicoptère
+//
+// Matilda Kang
+
 public class TourneObjet : MonoBehaviour
 {
     // Déclarer les variables
@@ -12,6 +16,7 @@ public class TourneObjet : MonoBehaviour
     private DeplacementHelico ScriptDeplacementHelico;
     public bool finJeu;
     public GameObject helico; 
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +29,7 @@ public class TourneObjet : MonoBehaviour
         demarreMoteur = false;
  
     }
+
 
     // Update is called once per frame
     void Update()
